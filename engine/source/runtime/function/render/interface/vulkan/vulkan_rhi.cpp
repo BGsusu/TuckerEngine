@@ -627,7 +627,7 @@ namespace Piccolo
             LOG_ERROR("validation layers requested, but not available!");
         }
 
-        m_vulkan_api_version = VK_API_VERSION_1_0;
+        m_vulkan_api_version = VK_API_VERSION_1_1;
 
         // app info
         VkApplicationInfo appInfo {};
@@ -800,8 +800,8 @@ namespace Piccolo
         device_create_info.pQueueCreateInfos       = queue_create_infos.data();
         device_create_info.queueCreateInfoCount    = static_cast<uint32_t>(queue_create_infos.size());
         device_create_info.pEnabledFeatures        = &physical_device_features;
-        device_create_info.enabledExtensionCount   = static_cast<uint32_t>(m_device_extensions.size());
         device_create_info.ppEnabledExtensionNames = m_device_extensions.data();
+        device_create_info.enabledExtensionCount   = static_cast<uint32_t>(m_device_extensions.size());
         device_create_info.enabledLayerCount       = 0;
 
         if (vkCreateDevice(m_physical_device, &device_create_info, nullptr, &m_device) != VK_SUCCESS)
